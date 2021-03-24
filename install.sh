@@ -39,7 +39,7 @@ sudo mv ~/k8s.conf /etc/sysctl.d/k8s.conf
 sudo sysctl --system 
 
 sudo setenforce 0 
-sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config 
+sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/'g /etc/selinux/config 
 
 sudo sed -i '/swap/d' /etc/fstab  
 sudo swapoff -a 
