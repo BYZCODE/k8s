@@ -13,7 +13,8 @@ else
 	exit 
 fi 
 
-bash <(curl -4 -L http://toyun.xyz/docker/install.sh)
+sudo yum install -y docker 
+sudo systemctl enable docker &&  sudo systemctl start docker
 
 echo '[kubernetes]  
 name=Kubernetes  
