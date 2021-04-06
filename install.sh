@@ -13,10 +13,26 @@ else
 	exit 
 fi 
 
-sudo yum install -y yum-utils
-sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo 
-sudo yum install -y docker-ce-20.10.5 docker-ce-cli-20.10.5 containerd.io-20.10.5 
-sudo systemctl enable docker.socket --now
+clear
+echo 'Which Docker Version ?
+1. Default (kubectl master)
+2. 20.10.5 (minikube)'
+read -p '[1/2]: ' reply2
+if [ "$reply2" == 1 ] || [ "$reply2" == 2 ];then
+	clear
+else
+	echo 'Error!Just 1 or 2'
+	exit
+fi
+
+if [ "$reply2" == 1 ];then
+	sudo bash <(curl -4 -L http://toyun.xyz/docker/install.sh)
+elif [ "$reply2" == 2 ];then
+	sudo yum install -y yum-utils
+	sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo 
+	sudo yum install -y docker-ce-20.10.5 docker-ce-cli-20.10.5 containerd.io-20.10.5 
+	sudo systemctl enable docker.socket --now
+fi
 
 echo '[kubernetes]  
 name=Kubernetes  
