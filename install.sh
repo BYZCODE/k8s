@@ -13,8 +13,10 @@ else
 	exit 
 fi 
 
-sudo yum install -y docker 
-sudo systemctl enable docker &&  sudo systemctl start docker
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo 
+sudo yum install -y docker-ce-20.10.5 docker-ce-cli-20.10.5 containerd.io-20.10.5 
+sudo systemctl enable docker.socket --now
 
 echo '[kubernetes]  
 name=Kubernetes  
